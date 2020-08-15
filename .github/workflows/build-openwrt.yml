@@ -115,8 +115,11 @@ jobs:
         make -j1 V=s
         echo "::set-output name=status::success"
         
-    - name: Copy .congif to bin
-      run: sudo cp openwrt/.config openwrt/bin/.config
+    - name: Upload congif
+      uses: actions/upload-artifact@master
+      with:
+        name: OpenWrt_config
+        path: openwrt/.config
       
     - name: Upload bin directory
       uses: actions/upload-artifact@master
